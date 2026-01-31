@@ -25,7 +25,14 @@ const isWebDevMode = () => process.env['NODE_ENV'] === 'development' && isWebApp
 // Dev API only in development mode and web platform
 // with command `pnpm dev-web`
 // for production build or tauri app use the production Web API
-export const getAPIBaseUrl = () => (isWebDevMode() ? '/api' : `${getBaseUrl()}/api`);
+export const getAPIBaseUrl = () => {
+  // For web platform, always use relative path to avoid CORS issues
+  if (isWebAppPlatform()) {
+    return '/api';
+  }
+  // For Tauri app, use the configured base URL
+  return `${getBaseUrl()}/api`;
+};
 
 // For Node.js API that currently not supported in some edge runtimes
 export const getNodeAPIBaseUrl = () => (isWebDevMode() ? '/api' : `${getNodeBaseUrl()}/api`);
