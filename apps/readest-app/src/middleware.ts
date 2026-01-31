@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const allowedOrigins = [
   'https://web.readest.com',
+  'https://yuejie.vercel.app',
+  'https://www.readest.com.cn',
+  'https://readest.com.cn',
+  'https://www.readest.cn',
+  'https://readest.cn',
   'https://tauri.localhost',
   'http://tauri.localhost',
   'http://localhost:3000',
