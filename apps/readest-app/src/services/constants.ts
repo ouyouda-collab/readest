@@ -15,7 +15,13 @@ import {
   ViewConfig,
   ViewSettings,
 } from '@/types/book';
-import { KOSyncSettings, ReadSettings, SystemSettings } from '@/types/settings';
+import {
+  KOSyncSettings,
+  LibraryGroupByType,
+  LibrarySortByType,
+  ReadSettings,
+  SystemSettings,
+} from '@/types/settings';
 import { UserStorageQuota, UserDailyTranslationQuota } from '@/types/quota';
 import { getDefaultMaxBlockSize, getDefaultMaxInlineSize } from '@/utils/config';
 import { stubTranslation as _ } from '@/utils/misc';
@@ -75,8 +81,9 @@ export const DEFAULT_SYSTEM_SETTINGS: Partial<SystemSettings> = {
   telemetryEnabled: true,
   discordRichPresenceEnabled: false,
   libraryViewMode: 'grid',
-  librarySortBy: 'updated',
+  librarySortBy: LibrarySortByType.Updated,
   librarySortAscending: false,
+  libraryGroupBy: LibraryGroupByType.Manual,
   libraryCoverFit: 'crop',
   libraryAutoColumns: true,
   libraryColumns: 6,
@@ -706,6 +713,9 @@ export const DEFAULT_DAILY_TRANSLATION_QUOTA: UserDailyTranslationQuota = {
 export const DOUBLE_CLICK_INTERVAL_THRESHOLD_MS = 250;
 export const DISABLE_DOUBLE_CLICK_ON_MOBILE = true;
 export const LONG_HOLD_THRESHOLD = 500;
+
+export const SIZE_PER_LOC = 1500;
+export const SIZE_PER_TIME_UNIT = 1600;
 
 export const CUSTOM_THEME_TEMPLATES = [
   {
